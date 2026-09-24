@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="أكاديمية صرح — منصة متخصصة في الدورات الهندسية الاحترافية." />
+  <title>أكاديمية صرح | ابنِ مستقبلك الهندسي</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div id="siteView">
+    <header class="site-header" id="header">
+      <div class="container header-inner">
+        <a class="brand" href="#home" aria-label="أكاديمية صرح - الرئيسية">
+          <span class="brand-logo-wrap" aria-hidden="true"><img src="assets/sarh-logo.png" alt="" /></span>
+          <span><strong>أكاديمية صرح</strong><small>للتدريب الهندسي</small></span>
+        </a>
+        <nav class="main-nav" id="mainNav" aria-label="القائمة الرئيسية">
+          <a href="#home" class="active">الرئيسية</a>
+          <a href="#intro-videos">تعرف على الدورات</a>
+          <a href="#courses">الدورات</a>
+          <a href="#how-it-works">آلية الانضمام</a>
+          <a href="#faq">الأسئلة الشائعة</a>
+        </nav>
+        <div class="header-actions">
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="تفعيل الوضع المظلم" title="الوضع المظلم"><span class="theme-sun">☀</span><span class="theme-moon">☾</span></button>
+          <button class="btn btn-ghost" data-open-login>
+            <svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+            دخول المتدربين
+          </button>
+          <a class="btn btn-primary header-join" href="#join">طلب انضمام</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-glow hero-glow-one"></div><div class="hero-glow hero-glow-two"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <div class="eyebrow"><span></span> تدريب هندسي يصنع فرقاً حقيقياً</div>
+            <h1>ابنِ خبرتك.<br><em>شيّد مستقبلك.</em></h1>
+            <p>دورات هندسية تطبيقية في الأوتوكاد، بريمافيرا، حساب الكميات والمزيد — صُممت لتأخذك من المعرفة إلى الاحتراف بثقة.</p>
+            <div class="hero-actions">
+              <a href="#join" class="btn btn-primary btn-large">ابدأ رحلتك الآن <span>←</span></a>
+              <button class="watch-link" data-video="academy"><span class="play-mini">▶</span> شاهد كيف تعمل المنصة</button>
+            </div>
+            <div class="trust-row">
+              <div class="avatars"><span>م</span><span>س</span><span>أ</span><span>+</span></div>
+              <div><strong>+1,200</strong><small>متدرب وثقوا بصرح</small></div>
+              <div class="trust-separator"></div>
+              <div class="rating"><strong>4.9 <span>★</span></strong><small>تقييم المتدربين</small></div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal delay-1">
+            <div class="hero-image-wrap">
+              <img src="assets/engineering-hero.jpg" alt="مهندس يعمل على مخططات ومشروعات هندسية" />
+              <div class="image-shade"></div>
+              <div class="course-progress-card">
+                <div class="progress-card-head"><span class="cad-icon">A</span><div><small>أكمل التعلم</small><strong>AutoCAD الاحترافي</strong></div><b>72%</b></div>
+                <div class="progress-track"><i style="width:72%"></i></div>
+                <div class="progress-meta"><span>18 من 25 درساً</span><span>12 ساعة تدريبية</span></div>
+              </div>
+              <div class="live-card"><span class="live-dot"></span><div><small>جلسة مباشرة</small><strong>بعد 25 دقيقة</strong></div></div>
+              <div class="floating-badge"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6l7-3zM9 12l2 2 4-4"/></svg><span><strong>محتوى موثوق</strong><small>بإشراف مهندسين محترفين</small></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="container software-strip reveal delay-2">
+          <span>برامج ستتقنها معنا</span>
+          <div class="software-logos"><b><i class="autocad">A</i> AutoCAD</b><b><i class="primavera">P6</i> Primavera</b><b><i class="revit">R</i> Revit</b><b><i class="excel">X</i> Excel</b><b><i class="civil">C3</i> Civil 3D</b></div>
+        </div>
+      </section>
+
+      <section class="section intro-section" id="intro-videos">
+        <div class="container">
+          <div class="section-head split-head reveal">
+            <div><span class="section-kicker">شاهد قبل أن تبدأ</span><h2>تعرّف على دوراتنا<br><em>في دقائق</em></h2></div>
+            <p>جولة سريعة داخل كل دورة لتتعرف على المحتوى، أسلوب الشرح، والمهارات التي ستكتسبها قبل طلب الانضمام.</p>
+          </div>
+          <div class="video-grid">
+            <article class="video-card reveal" data-video="autocad">
+              <div class="video-thumb thumb-autocad">
+                <div class="screen-art cad-screen"><span class="toolbar"></span><svg viewBox="0 0 300 160"><path d="M35 130L80 45l53 29 50-35 78 48-40 43zM80 45v85m53-56v56m50-91v91M35 130h226"/></svg></div>
+                <span class="duration">02:18</span><button class="play-button" aria-label="تشغيل فيديو الأوتوكاد">▶</button>
+                <span class="video-tag">الأكثر طلباً</span>
+              </div>
+              <div class="video-info"><div><small>التصميم والرسم الهندسي</small><h3>AutoCAD من الصفر إلى الاحتراف</h3></div><span class="circle-arrow">↗</span></div>
+            </article>
+            <article class="video-card reveal delay-1" data-video="primavera">
+              <div class="video-thumb thumb-primavera">
+                <div class="screen-art primavera-screen"><span class="sidebars"></span><div class="gantt"><i></i><i></i><i></i><i></i><i></i></div></div>
+                <span class="duration">03:05</span><button class="play-button" aria-label="تشغيل فيديو بريمافيرا">▶</button>
+              </div>
+              <div class="video-info"><div><small>إدارة المشاريع</small><h3>Primavera P6 لإدارة المشاريع</h3></div><span class="circle-arrow">↗</span></div>
+            </article>
+            <article class="video-card reveal delay-2" data-video="quantity">
+              <div class="video-thumb thumb-quantity">
+                <div class="screen-art quantity-screen"><div class="plan-lines"></div><div class="calc"><b>128.50</b><span>× 24.00</span><em>3,084</em></div></div>
+                <span class="duration">02:42</span><button class="play-button" aria-label="تشغيل فيديو حساب الكميات">▶</button>
+              </div>
+              <div class="video-info"><div><small>المكتب الفني</small><h3>حساب الكميات وحصر الأعمال</h3></div><span class="circle-arrow">↗</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section courses-section" id="courses">
+        <div class="container">
+          <div class="section-head centered reveal"><span class="section-kicker">مساراتنا التدريبية</span><h2>اختر المهارة التي <em>تبني مستقبلك</em></h2><p>محتوى تطبيقي من واقع سوق العمل، بمشاريع وتمارين هندسية حقيقية.</p></div>
+          <div class="filter-tabs" id="courseFilters"><button class="active" data-filter="all">جميع الدورات</button><button data-filter="design">التصميم الهندسي</button><button data-filter="management">إدارة المشاريع</button><button data-filter="technical">المكتب الفني</button></div>
+          <div class="courses-grid" id="coursesGrid"></div>
+          <div class="courses-footer reveal"><p>لست متأكداً من الدورة المناسبة؟ <strong>سنساعدك في اختيار مسارك.</strong></p><a href="#join">اطلب استشارة مجانية <span>←</span></a></div>
+        </div>
+      </section>
+
+      <section class="section how-section" id="how-it-works">
+        <div class="container how-grid">
+          <div class="how-copy reveal">
+            <span class="section-kicker light">خطوات واضحة وآمنة</span>
+            <h2>رحلتك معنا تبدأ<br><em>بموافقة الإدارة</em></h2>
+            <p>نراجع كل طلب انضمام لضمان تجربة تدريبية جادة ومخصصة. لن يُتاح أي محتوى قبل اعتماد حسابك من إدارة الأكاديمية.</p>
+            <div class="security-note"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6l7-3zM9 12l2 2 4-4"/></svg><div><strong>وصول محمي ومعتمد</strong><span>اسم المستخدم وكلمة المرور يصدران حصراً من إدارة صرح.</span></div></div>
+          </div>
+          <div class="steps-list reveal delay-1">
+            <div class="step"><span class="step-num">01</span><div><h3>أرسل طلب الانضمام</h3><p>أدخل بياناتك واختر الدورة التي تهمك.</p></div><i>✓</i></div>
+            <div class="step"><span class="step-num">02</span><div><h3>مراجعة الطلب</h3><p>تتحقق الإدارة من بياناتك وتتواصل معك.</p></div><i>✓</i></div>
+            <div class="step"><span class="step-num">03</span><div><h3>اعتماد وإنشاء الحساب</h3><p>يُنشئ الأدمن اسم مستخدم وكلمة مرور خاصة بك.</p></div><i>✓</i></div>
+            <div class="step"><span class="step-num">04</span><div><h3>ابدأ التعلم</h3><p>سجّل الدخول وابدأ رحلتك في المسار المختار.</p></div><i>✓</i></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section features-section">
+        <div class="container">
+          <div class="section-head centered reveal"><span class="section-kicker">لماذا أكاديمية صرح؟</span><h2>كل ما تحتاجه لتنتقل<br><em>من التعلم إلى التطبيق</em></h2></div>
+          <div class="features-grid">
+            <div class="feature reveal"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v12H4zM8 21h8M12 17v4M8 9l3 3 5-5"/></svg></span><h3>تطبيق عملي مكثف</h3><p>مشاريع وتمارين تحاكي واقع العمل الهندسي، وليست مجرد معلومات نظرية.</p></div>
+            <div class="feature reveal delay-1"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M17 11l2 2 4-4"/></svg></span><h3>مدربون من سوق العمل</h3><p>مهندسون ذوو خبرة ينقلون لك خلاصة تجاربهم المهنية خطوة بخطوة.</p></div>
+            <div class="feature reveal delay-2"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></span><h3>شهادة إتمام معتمدة</h3><p>وثّق مهاراتك بشهادة إتمام رقمية بعد اجتياز متطلبات الدورة.</p></div>
+            <div class="feature reveal delay-3"><span class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></span><h3>تعلم بمرونة</h3><p>شاهد الدروس في الوقت الذي يناسبك وارجع إليها طوال مدة اشتراكك.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section join-section" id="join">
+        <div class="container join-card reveal">
+          <div class="join-copy">
+            <span class="section-kicker light">خطوتك الأولى تبدأ هنا</span>
+            <h2>جاهز لتشييد<br><em>مستقبلك الهندسي؟</em></h2>
+            <p>أرسل طلبك الآن، وسيقوم فريق أكاديمية صرح بمراجعته والتواصل معك خلال يوم عمل.</p>
+            <div class="join-points"><span>✓ لا يتطلب الدفع الآن</span><span>✓ استشارة مجانية لاختيار المسار</span><span>✓ بياناتك محفوظة بأمان</span></div>
+          </div>
+          <form class="join-form" id="joinForm">
+            <div class="form-heading"><h3>طلب انضمام جديد</h3><p>املأ البيانات التالية بدقة</p></div>
+            <div class="form-row"><label>الاسم الكامل<input type="text" name="name" placeholder="مثال: أحمد محمد" required /></label><label>رقم الهاتف<input type="tel" name="phone" placeholder="07XXXXXXXX" required /></label></div>
+            <div class="form-row"><label>البريد الإلكتروني<input type="email" name="email" placeholder="name@example.com" required /></label><label>التخصص الهندسي<select name="specialty" required><option value="">اختر التخصص</option><option>هندسة مدنية</option><option>هندسة معمارية</option><option>هندسة ميكانيكية</option><option>هندسة كهربائية</option><option>أخرى</option></select></label></div>
+            <label>الدورة المطلوبة<select name="course" required><option value="">اختر الدورة</option><option>AutoCAD من الصفر إلى الاحتراف</option><option>Primavera P6 لإدارة المشاريع</option><option>حساب الكميات وحصر الأعمال</option><option>Revit BIM للمهندسين</option><option>Excel للمهندسين</option><option>Civil 3D المتقدم</option></select></label>
+            <label class="check-label"><input type="checkbox" required /><span>أوافق على سياسة الخصوصية وشروط الاستخدام.</span></label>
+            <button class="btn btn-primary btn-submit" type="submit"><span>إرسال طلب الانضمام</span><b>←</b></button>
+            <div class="form-status"><span></span> تتم مراجعة الطلبات خلال يوم عمل</div>
+          </form>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq">
+        <div class="container faq-grid">
+          <div class="faq-heading reveal"><span class="section-kicker">أسئلة شائعة</span><h2>لديك سؤال؟<br><em>لدينا الإجابة.</em></h2><p>لم تجد ما تبحث عنه؟ تواصل مع فريقنا وسنجيبك بكل سرور.</p><a href="mailto:info@sarh-academy.com">info@sarh-academy.com</a></div>
+          <div class="accordion reveal delay-1">
+            <div class="faq-item open"><button><span>كيف يمكنني الانضمام إلى دورة؟</span><b>−</b></button><div><p>أرسل طلب الانضمام من النموذج، ثم تراجع الإدارة بياناتك وتتواصل معك. بعد الموافقة، يصدر لك اسم مستخدم وكلمة مرور للدخول إلى المنصة.</p></div></div>
+            <div class="faq-item"><button><span>هل أستطيع الدخول مباشرة بعد التسجيل؟</span><b>+</b></button><div><p>لا، حمايةً للمحتوى وجودة التجربة، لا يُفعّل الحساب إلا بعد موافقة الإدارة وإنشاء بيانات الدخول الخاصة بك.</p></div></div>
+            <div class="faq-item"><button><span>هل الدورات مناسبة للمبتدئين؟</span><b>+</b></button><div><p>نعم، توجد مسارات تبدأ من الأساسيات وأخرى للمستويات المتقدمة، ويمكن لفريقنا مساعدتك في اختيار المستوى الأنسب.</p></div></div>
+            <div class="faq-item"><button><span>هل أحصل على شهادة بعد انتهاء الدورة؟</span><b>+</b></button><div><p>نعم، تحصل على شهادة إتمام رقمية بعد إكمال الدروس والمشاريع المطلوبة في مسارك التدريبي.</p></div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-main">
+        <div class="footer-brand"><a class="brand light-brand" href="#home"><span class="brand-logo-wrap"><img src="assets/sarh-logo.png" alt="شعار صرح" /></span><span><strong>أكاديمية صرح</strong><small>للتدريب الهندسي</small></span></a><p>نمنح المهندسين المعرفة والأدوات التي يحتاجونها لبناء مستقبل مهني أقوى.</p></div>
+        <div class="footer-links"><div><h4>المنصة</h4><a href="#courses">الدورات</a><a href="#intro-videos">فيديوهات تعريفية</a><a href="#how-it-works">آلية الانضمام</a></div><div><h4>الدعم</h4><a href="#faq">الأسئلة الشائعة</a><a href="mailto:info@sarh-academy.com">تواصل معنا</a><a href="#">سياسة الخصوصية</a></div><div><h4>الدخول</h4><button data-open-login>دخول المتدربين</button><a href="#join">طلب انضمام</a><button data-admin-login>لوحة الإدارة</button></div></div>
+      </div>
+      <div class="container footer-bottom"><span>© 2026 أكاديمية صرح. جميع الحقوق محفوظة.</span><span>صُممت لبناء عقول هندسية واعدة <b>◆</b></span></div>
+    </footer>
+  </div>
+
+  <!-- Login modal -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel login-panel">
+      <button class="modal-close" data-close-modal aria-label="إغلاق">×</button>
+      <div class="login-brand"><span class="brand-logo-wrap"><img src="assets/sarh-logo.png" alt="شعار صرح" /></span><div><strong>مرحباً بعودتك</strong><small>سجّل دخولك إلى أكاديمية صرح</small></div></div>
+      <div class="login-tabs"><button class="active" data-role="student">متدرب</button><button data-role="admin">إدارة المنصة</button></div>
+      <form id="loginForm">
+        <label>اسم المستخدم<div class="input-icon"><svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10"/></svg><input name="username" autocomplete="username" placeholder="أدخل اسم المستخدم" required /></div></label>
+        <label>كلمة المرور<div class="input-icon"><svg viewBox="0 0 24 24"><path d="M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4"/></svg><input type="password" name="password" autocomplete="current-password" placeholder="أدخل كلمة المرور" required /><button type="button" class="show-pass">إظهار</button></div></label>
+        <div class="login-options"><label><input type="checkbox" /> تذكرني</label><button type="button" id="forgotBtn">نسيت كلمة المرور؟</button></div>
+        <p class="login-error" id="loginError"></p>
+        <button class="btn btn-primary btn-submit" type="submit">تسجيل الدخول <b>←</b></button>
+      </form>
+      <div class="demo-credentials" id="demoCredentials"><span>بيانات التجربة</span><code>trainee</code><i>/</i><code>1234</code><button type="button" id="fillDemo">استخدام</button></div>
+      <p class="no-account">ليس لديك حساب؟ <button data-go-join>أرسل طلب انضمام</button></p>
+    </div>
+  </div>
+
+  <!-- Video modal -->
+  <div class="modal" id="videoModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel video-modal-panel">
+      <button class="modal-close light-close" data-close-modal aria-label="إغلاق">×</button>
+      <div class="prototype-video" id="prototypeVideo">
+        <img src="assets/engineering-hero.jpg" alt="" />
+        <div class="video-overlay"><span class="video-logo">صـرح</span><div class="video-center"><small id="videoCategory">جولة تعريفية</small><h3 id="videoTitle">أكاديمية صرح</h3><button id="videoPlayToggle">▶</button><p>اضغط لعرض نموذج تشغيل الفيديو</p></div><div class="fake-controls"><button id="controlPlay">▶</button><div class="fake-track"><i id="fakeProgress"></i></div><span id="fakeTime">00:00 / 02:18</span><button>⛶</button></div></div>
+      </div>
+      <div class="video-caption"><div><span>فيديو تعريفي</span><h4 id="captionTitle">عن أكاديمية صرح</h4></div><a href="#join" data-close-modal>اطلب الانضمام <b>←</b></a></div>
+    </div>
+  </div>
+
+  <!-- Approval credentials modal -->
+  <div class="modal" id="approvalModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel approval-panel">
+      <button class="modal-close" data-close-modal>×</button>
+      <div class="approval-icon">✓</div><h3>اعتماد الطلب وإنشاء الحساب</h3><p id="approvalUserText">سيتم تفعيل حساب المتدرب وإصدار بيانات الدخول التالية.</p>
+      <form id="approvalForm">
+        <input type="hidden" name="requestId" />
+        <label>اسم المستخدم<input name="newUsername" required /></label>
+        <label>كلمة المرور<div class="password-generate"><input name="newPassword" required /><button type="button" id="regeneratePass">توليد</button></div></label>
+        <div class="approval-actions"><button type="button" class="btn btn-soft" data-close-modal>إلغاء</button><button type="submit" class="btn btn-primary">اعتماد وإنشاء الحساب</button></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success request modal -->
+  <div class="modal" id="successModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel success-panel"><div class="success-check"><span>✓</span></div><span class="success-kicker">تم استلام طلبك</span><h3>خطوتك الأولى اكتملت!</h3><p>سنراجع بياناتك ونتواصل معك خلال يوم عمل. احتفظ برقم الطلب للمتابعة.</p><div class="request-number"><small>رقم الطلب</small><strong id="newRequestId">SRH-0000</strong></div><button class="btn btn-primary" data-close-modal>حسناً، شكراً</button></div>
+  </div>
+
+  <!-- Student dashboard -->
+  <div id="studentView" class="dashboard-view hidden">
+    <aside class="dash-sidebar">
+      <a class="brand dash-brand" href="#"><span class="brand-logo-wrap"><img src="assets/sarh-logo.png" alt="شعار صرح" /></span><span><strong>أكاديمية صرح</strong><small>بوابة المتدرب</small></span></a>
+      <nav><button class="active"><span>⌂</span>الرئيسية</button><button><span>▷</span>دوراتي</button><button><span>▤</span>الشهادات</button><button><span>◷</span>جدول الجلسات</button><button><span>⚙</span>الإعدادات</button></nav>
+      <div class="sidebar-help"><span>؟</span><strong>تحتاج مساعدة؟</strong><small>فريق الدعم جاهز للإجابة</small><button>تواصل معنا</button></div>
+      <button class="dash-logout" data-logout>↪ تسجيل الخروج</button>
+    </aside>
+    <div class="dash-content">
+      <header class="dash-topbar"><button class="dash-menu">☰</button><div class="dash-search">⌕ <input placeholder="ابحث في الدروس والدورات..." /></div><div class="topbar-actions"><button class="theme-toggle" type="button" data-theme-toggle aria-label="تفعيل الوضع المظلم" title="الوضع المظلم"><span class="theme-sun">☀</span><span class="theme-moon">☾</span></button><button class="notification">♧<i></i></button><div class="user-chip"><span id="studentInitial">م</span><div><strong id="studentNameTop">متدرب صرح</strong><small>متدرب</small></div><b>⌄</b></div></div></header>
+      <main class="student-main">
+        <div class="welcome-row"><div><span>صباح التقدم 👋</span><h1>مرحباً، <b id="studentFirstName">محمد</b></h1><p>واصل تقدمك، أنت على بُعد خطوات من إتقان مهارة جديدة.</p></div><div class="current-streak"><span>🔥</span><div><strong>5 أيام</strong><small>سلسلة التعلم الحالية</small></div></div></div>
+        <section class="continue-card"><div class="continue-art"><span class="cad-icon big">A</span><div class="wireframe"></div></div><div class="continue-body"><span class="mini-label">تابع من حيث توقفت</span><h2>AutoCAD من الصفر إلى الاحتراف</h2><p>الوحدة الرابعة · الدرس 18: الطبقات وإدارة خصائص الرسم</p><div class="lesson-progress"><div><i></i></div><span>72%</span></div><button class="btn btn-primary" id="continueLearning">متابعة التعلم <b>▶</b></button></div><div class="course-circle"><strong>18</strong><span>من 25 درساً</span></div></section>
+        <div class="student-grid">
+          <section><div class="dash-section-head"><div><h2>دوراتي</h2><p>المسارات المسجلة في حسابك</p></div><button>عرض الكل ←</button></div><div class="my-courses" id="myCourses"></div></section>
+          <aside><div class="next-session"><div class="session-head"><span>الجلسة القادمة</span><b>مباشر</b></div><div class="calendar-date"><strong>18</strong><small>سبتمبر</small></div><h3>ورشة المخططات التنفيذية</h3><p>مع م. سامر الخطيب</p><div class="session-time">◷ 07:00 مساءً · 60 دقيقة</div><button>إضافة إلى التقويم</button></div><div class="achievement"><span>◆</span><div><strong>إنجاز جديد قريب!</strong><small>أكمل درسين لتحصل على شارة المثابرة.</small><div><i style="width:68%"></i></div></div></div></aside>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Admin dashboard -->
+  <div id="adminView" class="dashboard-view admin-view hidden">
+    <aside class="dash-sidebar admin-sidebar">
+      <a class="brand dash-brand" href="#"><span class="brand-logo-wrap"><img src="assets/sarh-logo.png" alt="شعار صرح" /></span><span><strong>أكاديمية صرح</strong><small>لوحة الإدارة</small></span></a>
+      <nav><button class="active"><span>▦</span>نظرة عامة</button><button><span>♙</span>طلبات الانضمام <i id="pendingBadge">0</i></button><button><span>♚</span>المتدربون</button><button><span>▷</span>إدارة الدورات</button><button><span>▥</span>التقارير</button><button><span>⚙</span>الإعدادات</button></nav>
+      <div class="admin-mini-profile"><span>أ</span><div><strong>مدير المنصة</strong><small>admin@sarh.com</small></div></div>
+      <button class="dash-logout" data-logout>↪ تسجيل الخروج</button>
+    </aside>
+    <div class="dash-content">
+      <header class="dash-topbar"><button class="dash-menu">☰</button><div><h2>لوحة الإدارة</h2><span class="breadcrumb">الرئيسية / نظرة عامة</span></div><div class="topbar-actions"><button class="admin-site-btn" id="viewSite">↗ عرض المنصة</button><button class="theme-toggle" type="button" data-theme-toggle aria-label="تفعيل الوضع المظلم" title="الوضع المظلم"><span class="theme-sun">☀</span><span class="theme-moon">☾</span></button><button class="notification">♧<i></i></button><div class="user-chip"><span>أ</span><div><strong>مدير صرح</strong><small>صلاحية كاملة</small></div><b>⌄</b></div></div></header>
+      <main class="admin-main">
+        <div class="admin-welcome"><div><h1>صباح الخير، مدير المنصة 👋</h1><p>إليك ملخص نشاط أكاديمية صرح اليوم.</p></div><span id="todayDate">الاثنين، 14 سبتمبر 2026</span></div>
+        <div class="stats-grid">
+          <div class="stat-card"><span class="stat-icon users-icon">♙</span><div><small>إجمالي المتدربين</small><strong id="totalUsers">0</strong><em>+12% هذا الشهر</em></div><i class="sparkline">╱╲╱╱╲╱</i></div>
+          <div class="stat-card pending-stat"><span class="stat-icon requests-icon">▤</span><div><small>طلبات بانتظار المراجعة</small><strong id="pendingCount">0</strong><em>تحتاج إلى إجراء</em></div><i class="sparkline">╲╱╲╱╱</i></div>
+          <div class="stat-card"><span class="stat-icon course-icon">▷</span><div><small>الدورات النشطة</small><strong>6</strong><em>3 مسارات تدريبية</em></div><i class="sparkline">╱╱╲╱╱</i></div>
+          <div class="stat-card"><span class="stat-icon completion-icon">↗</span><div><small>معدل إكمال الدورات</small><strong>78%</strong><em>+5% عن الشهر الماضي</em></div><i class="sparkline">╱╲╱╱╱</i></div>
+        </div>
+        <section class="requests-section">
+          <div class="requests-header"><div><h2>طلبات الانضمام</h2><p>راجع الطلبات وأنشئ بيانات الدخول للمتدربين المقبولين</p></div><div class="table-actions"><div class="mini-search">⌕ <input id="requestSearch" placeholder="بحث بالاسم أو رقم الطلب" /></div><button class="filter-btn">☷ تصفية</button><button class="export-btn">⇩ تصدير</button></div></div>
+          <div class="request-tabs" id="requestTabs"><button class="active" data-status="all">الكل <span id="allTabCount">0</span></button><button data-status="pending">بانتظار المراجعة <span id="pendingTabCount">0</span></button><button data-status="approved">تم القبول <span id="approvedTabCount">0</span></button><button data-status="rejected">مرفوض <span id="rejectedTabCount">0</span></button></div>
+          <div class="table-wrap"><table><thead><tr><th>رقم الطلب</th><th>المتقدم</th><th>التخصص</th><th>الدورة المطلوبة</th><th>تاريخ الطلب</th><th>الحالة</th><th>الإجراء</th></tr></thead><tbody id="requestsTable"></tbody></table><div class="empty-state hidden" id="emptyRequests"><span>⌕</span><h3>لا توجد طلبات مطابقة</h3><p>جرّب تغيير البحث أو عامل التصفية.</p></div></div>
+          <div class="table-footer"><span id="tableResultText">عرض 0 طلبات</span><div><button disabled>→</button><button class="active">1</button><button disabled>←</button></div></div>
+        </section>
+        <div class="admin-bottom-grid"><div class="activity-panel"><div class="panel-head"><h3>آخر النشاطات</h3><button>عرض الكل</button></div><div id="activityList"></div></div><div class="quick-panel"><div class="panel-head"><h3>إجراءات سريعة</h3></div><button data-scroll-requests><span>＋</span><div><strong>مراجعة طلبات جديدة</strong><small>اعتماد أو رفض طلب انضمام</small></div><b>←</b></button><button><span>▷</span><div><strong>إضافة دورة</strong><small>إنشاء محتوى تدريبي جديد</small></div><b>←</b></button><button><span>♙</span><div><strong>إضافة متدرب يدوياً</strong><small>إنشاء حساب دون طلب مسبق</small></div><b>←</b></button><button id="resetDemo"><span>↻</span><div><strong>إعادة ضبط بيانات العرض</strong><small>استرجاع الطلبات التجريبية</small></div><b>←</b></button></div></div>
+      </main>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="production-api.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
