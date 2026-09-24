@@ -236,6 +236,30 @@
     </div>
   </div>
 
+  <!-- Add course modal -->
+  <div class="modal" id="courseModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel course-modal-panel">
+      <button class="modal-close" data-close-modal aria-label="إغلاق">×</button>
+      <div class="course-modal-heading"><span class="course-modal-icon">▷</span><div><h3>إضافة دورة جديدة</h3><p>أدخل معلومات الدورة وسيتم حفظها مباشرة في قاعدة البيانات.</p></div></div>
+      <form id="courseForm">
+        <div class="course-form-grid">
+          <label class="full-field">اسم الدورة<input name="title" placeholder="مثال: التصميم الإنشائي المتقدم" required maxlength="140" /></label>
+          <label>الرابط المختصر<input name="slug" dir="ltr" placeholder="structural-design" pattern="[a-z0-9-]{3,60}" title="أحرف إنجليزية صغيرة وأرقام وشرطة فقط" /></label>
+          <label>التصنيف<input name="category" placeholder="التصميم الهندسي" required /></label>
+          <label>المستوى<select name="level" required><option>مبتدئ</option><option>متوسط</option><option>متقدم</option><option>مبتدئ إلى متقدم</option><option>جميع المستويات</option></select></label>
+          <label>عدد الساعات<input name="duration" type="number" min="0" max="1000" value="10" required /></label>
+          <label>عدد الدروس<input name="lessons" type="number" min="0" max="1000" value="10" required /></label>
+          <label class="full-field">رابط الفيديو التعريفي<input name="introVideo" type="url" dir="ltr" placeholder="https://..." /></label>
+          <label class="full-field">وصف الدورة<textarea name="description" rows="4" placeholder="اكتب وصفاً مختصراً يوضح أهداف الدورة ومحتواها" required maxlength="600"></textarea></label>
+        </div>
+        <label class="course-publish"><input name="published" type="checkbox" checked /><span><strong>نشر الدورة مباشرة</strong><small>ستظهر في الصفحة الرئيسية وتصبح متاحة لطلبات الانضمام.</small></span></label>
+        <p class="course-form-error" id="courseFormError"></p>
+        <div class="approval-actions"><button type="button" class="btn btn-soft" data-close-modal>إلغاء</button><button type="submit" class="btn btn-primary">حفظ الدورة ونشرها</button></div>
+      </form>
+    </div>
+  </div>
+
   <!-- Success request modal -->
   <div class="modal" id="successModal" aria-hidden="true">
     <div class="modal-backdrop" data-close-modal></div>
@@ -246,7 +270,7 @@
   <div id="studentView" class="dashboard-view hidden">
     <aside class="dash-sidebar">
       <a class="brand dash-brand" href="#"><span class="brand-logo-wrap"><img src="assets/sarh-logo.png" alt="شعار صرح" /></span><span><strong>أكاديمية صرح</strong><small>بوابة المتدرب</small></span></a>
-      <nav><button class="active"><span>⌂</span>الرئيسية</button><button><span>▷</span>دوراتي</button><button><span>▤</span>الشهادات</button><button><span>◷</span>جدول الجلسات</button><button><span>⚙</span>الإعدادات</button></nav>
+      <nav><button class="active" data-student-view="overview"><span>⌂</span>الرئيسية</button><button data-student-view="courses"><span>▷</span>دوراتي</button><button data-student-view="certificates"><span>▤</span>الشهادات</button><button data-student-view="sessions"><span>◷</span>جدول الجلسات</button><button data-student-view="settings"><span>⚙</span>الإعدادات</button></nav>
       <div class="sidebar-help"><span>؟</span><strong>تحتاج مساعدة؟</strong><small>فريق الدعم جاهز للإجابة</small><button>تواصل معنا</button></div>
       <button class="dash-logout" data-logout>↪ تسجيل الخروج</button>
     </aside>
@@ -267,7 +291,7 @@
   <div id="adminView" class="dashboard-view admin-view hidden">
     <aside class="dash-sidebar admin-sidebar">
       <a class="brand dash-brand" href="#"><span class="brand-logo-wrap"><img src="assets/sarh-logo.png" alt="شعار صرح" /></span><span><strong>أكاديمية صرح</strong><small>لوحة الإدارة</small></span></a>
-      <nav><button class="active"><span>▦</span>نظرة عامة</button><button><span>♙</span>طلبات الانضمام <i id="pendingBadge">0</i></button><button><span>♚</span>المتدربون</button><button><span>▷</span>إدارة الدورات</button><button><span>▥</span>التقارير</button><button><span>⚙</span>الإعدادات</button></nav>
+      <nav><button class="active" data-admin-view="overview"><span>▦</span>نظرة عامة</button><button data-admin-view="requests"><span>♙</span>طلبات الانضمام <i id="pendingBadge">0</i></button><button data-admin-view="students"><span>♚</span>المتدربون</button><button data-admin-view="courses"><span>▷</span>إدارة الدورات</button><button data-admin-view="reports"><span>▥</span>التقارير</button><button data-admin-view="settings"><span>⚙</span>الإعدادات</button></nav>
       <div class="admin-mini-profile"><span>أ</span><div><strong>مدير المنصة</strong><small>admin@sarh.com</small></div></div>
       <button class="dash-logout" data-logout>↪ تسجيل الخروج</button>
     </aside>
@@ -278,8 +302,8 @@
         <div class="stats-grid">
           <div class="stat-card"><span class="stat-icon users-icon">♙</span><div><small>إجمالي المتدربين</small><strong id="totalUsers">0</strong><em>+12% هذا الشهر</em></div><i class="sparkline">╱╲╱╱╲╱</i></div>
           <div class="stat-card pending-stat"><span class="stat-icon requests-icon">▤</span><div><small>طلبات بانتظار المراجعة</small><strong id="pendingCount">0</strong><em>تحتاج إلى إجراء</em></div><i class="sparkline">╲╱╲╱╱</i></div>
-          <div class="stat-card"><span class="stat-icon course-icon">▷</span><div><small>الدورات النشطة</small><strong>6</strong><em>3 مسارات تدريبية</em></div><i class="sparkline">╱╱╲╱╱</i></div>
-          <div class="stat-card"><span class="stat-icon completion-icon">↗</span><div><small>معدل إكمال الدورات</small><strong>78%</strong><em>+5% عن الشهر الماضي</em></div><i class="sparkline">╱╲╱╱╱</i></div>
+          <div class="stat-card"><span class="stat-icon course-icon">▷</span><div><small>الدورات النشطة</small><strong id="activeCoursesCount">0</strong><em id="lessonsStatText">0 درس منشور</em></div><i class="sparkline">╱╱╲╱╱</i></div>
+          <div class="stat-card"><span class="stat-icon completion-icon">↗</span><div><small>معدل إكمال الدورات</small><strong id="completionRate">0%</strong><em>محسوب من تقدم المتدربين</em></div><i class="sparkline">╱╲╱╱╱</i></div>
         </div>
         <section class="requests-section">
           <div class="requests-header"><div><h2>طلبات الانضمام</h2><p>راجع الطلبات وأنشئ بيانات الدخول للمتدربين المقبولين</p></div><div class="table-actions"><div class="mini-search">⌕ <input id="requestSearch" placeholder="بحث بالاسم أو رقم الطلب" /></div><button class="filter-btn">☷ تصفية</button><button class="export-btn">⇩ تصدير</button></div></div>
@@ -287,7 +311,7 @@
           <div class="table-wrap"><table><thead><tr><th>رقم الطلب</th><th>المتقدم</th><th>التخصص</th><th>الدورة المطلوبة</th><th>تاريخ الطلب</th><th>الحالة</th><th>الإجراء</th></tr></thead><tbody id="requestsTable"></tbody></table><div class="empty-state hidden" id="emptyRequests"><span>⌕</span><h3>لا توجد طلبات مطابقة</h3><p>جرّب تغيير البحث أو عامل التصفية.</p></div></div>
           <div class="table-footer"><span id="tableResultText">عرض 0 طلبات</span><div><button disabled>→</button><button class="active">1</button><button disabled>←</button></div></div>
         </section>
-        <div class="admin-bottom-grid"><div class="activity-panel"><div class="panel-head"><h3>آخر النشاطات</h3><button>عرض الكل</button></div><div id="activityList"></div></div><div class="quick-panel"><div class="panel-head"><h3>إجراءات سريعة</h3></div><button data-scroll-requests><span>＋</span><div><strong>مراجعة طلبات جديدة</strong><small>اعتماد أو رفض طلب انضمام</small></div><b>←</b></button><button><span>▷</span><div><strong>إضافة دورة</strong><small>إنشاء محتوى تدريبي جديد</small></div><b>←</b></button><button><span>♙</span><div><strong>إضافة متدرب يدوياً</strong><small>إنشاء حساب دون طلب مسبق</small></div><b>←</b></button><button id="resetDemo"><span>↻</span><div><strong>إعادة ضبط بيانات العرض</strong><small>استرجاع الطلبات التجريبية</small></div><b>←</b></button></div></div>
+        <div class="admin-bottom-grid"><div class="activity-panel"><div class="panel-head"><h3>آخر النشاطات</h3><button>عرض الكل</button></div><div id="activityList"></div></div><div class="quick-panel"><div class="panel-head"><h3>إجراءات سريعة</h3></div><button data-scroll-requests><span>＋</span><div><strong>مراجعة طلبات جديدة</strong><small>اعتماد أو رفض طلب انضمام</small></div><b>←</b></button><button data-open-course-modal><span>▷</span><div><strong>إضافة دورة</strong><small>إنشاء محتوى تدريبي جديد</small></div><b>←</b></button><button data-open-student-modal><span>♙</span><div><strong>إضافة متدرب يدوياً</strong><small>إنشاء حساب دون طلب مسبق</small></div><b>←</b></button><button id="resetDemo"><span>↻</span><div><strong>إعادة ضبط بيانات العرض</strong><small>استرجاع الطلبات التجريبية</small></div><b>←</b></button></div></div>
       </main>
     </div>
   </div>
@@ -295,5 +319,6 @@
   <script src="config.js"></script>
   <script src="production-api.js"></script>
   <script src="app.js"></script>
+  <script src="production-v2.js"></script>
 </body>
 </html>

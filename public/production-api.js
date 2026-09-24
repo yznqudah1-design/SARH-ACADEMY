@@ -69,6 +69,15 @@
       const headers={...this.publicHeaders(),Authorization:`Bearer ${session.access_token}`,...(options.headers||{})};
       return fetch(url,{...options,headers});
     }
+    async listPublicCourses(){
+      const select='id,slug,title,description,category,level,duration_hours,lessons_count,cover_url,intro_video_url,published';
+      const response=await fetch(`${this.url}/rest/v1/courses?published=eq.true&select=${select}&order=created_at.asc`,{headers:this.publicHeaders()});
+      return this.parse(response);
+    }
+    async createCourse(course){
+      const response=await this.authenticatedFetch(`${this.url}/rest/v1/courses`,{method:'POST',headers:{Prefer:'return=representation'},body:JSON.stringify(course)});
+      const rows=await this.parse(response);return rows?.[0];
+    }
     async getMyEnrollments(){
       const select='progress,enrolled_at,courses(id,slug,title,category,level,duration_hours,lessons_count)';
       const response=await this.authenticatedFetch(`${this.url}/rest/v1/enrollments?select=${select}&order=enrolled_at.desc`);
@@ -87,6 +96,27 @@
       const response=await this.authenticatedFetch(`${this.url}/rest/v1/admin_audit_log?select=action,details,created_at&order=created_at.desc&limit=8`);
       return this.parse(response);
     }
+    async listAdminCourses(){const r=await this.authenticatedFetch(`${this.url}/rest/v1/courses?select=*&order=created_at.desc`);return this.parse(r)}
+    async updateCourse(id,course){const r=await this.authenticatedFetch(`${this.url}/rest/v1/courses?id=eq.${encodeURIComponent(id)}`,{method:'PATCH',headers:{Prefer:'return=representation'},body:JSON.stringify(course)});const rows=await this.parse(r);return rows?.[0]}
+    async deleteCourse(id){const r=await this.authenticatedFetch(`${this.url}/rest/v1/courses?id=eq.${encodeURIComponent(id)}`,{method:'DELETE'});return this.parse(r)}
+    async listAllLessons(){const r=await this.authenticatedFetch(`${this.url}/rest/v1/lessons?select=*&order=course_id,position`);return this.parse(r)}
+    async listCourseLessons(courseId){const r=await this.authenticatedFetch(`${this.url}/rest/v1/lessons?course_id=eq.${encodeURIComponent(courseId)}&select=*&order=position`);return this.parse(r)}
+    async createLesson(lesson){const r=await this.authenticatedFetch(`${this.url}/rest/v1/lessons`,{method:'POST',headers:{Prefer:'return=representation'},body:JSON.stringify(lesson)});const rows=await this.parse(r);return rows?.[0]}
+    async updateLesson(id,lesson){const r=await this.authenticatedFetch(`${this.url}/rest/v1/lessons?id=eq.${encodeURIComponent(id)}`,{method:'PATCH',headers:{Prefer:'return=representation'},body:JSON.stringify(lesson)});const rows=await this.parse(r);return rows?.[0]}
+    async deleteLesson(id){const r=await this.authenticatedFetch(`${this.url}/rest/v1/lessons?id=eq.${encodeURIComponent(id)}`,{method:'DELETE'});return this.parse(r)}
+    async listAdminEnrollments(){const r=await this.authenticatedFetch(`${this.url}/rest/v1/enrollments?select=id,user_id,course_id,progress,enrolled_at,completed_at,profiles(full_name,username),courses(title)&order=enrolled_at.desc`);return this.parse(r)}
+    async updateStudentStatus(id,status){const r=await this.authenticatedFetch(`${this.url}/rest/v1/profiles?id=eq.${encodeURIComponent(id)}`,{method:'PATCH',headers:{Prefer:'return=representation'},body:JSON.stringify({status})});const rows=await this.parse(r);return rows?.[0]}
+    async listSessions(){const r=await this.authenticatedFetch(`${this.url}/rest/v1/live_sessions?select=*,courses(title)&order=starts_at.asc`);return this.parse(r)}
+    async createSession(session){const r=await this.authenticatedFetch(`${this.url}/rest/v1/live_sessions`,{method:'POST',headers:{Prefer:'return=representation'},body:JSON.stringify(session)});const rows=await this.parse(r);return rows?.[0]}
+    async deleteSession(id){const r=await this.authenticatedFetch(`${this.url}/rest/v1/live_sessions?id=eq.${encodeURIComponent(id)}`,{method:'DELETE'});return this.parse(r)}
+    async listCertificates(){const r=await this.authenticatedFetch(`${this.url}/rest/v1/certificates?select=*,courses(title),profiles(full_name)&order=issued_at.desc`);return this.parse(r)}
+    async getMyProgress(){const r=await this.authenticatedFetch(`${this.url}/rest/v1/lesson_progress?select=lesson_id,completed,watched_seconds,updated_at`);return this.parse(r)}
+    async markLesson(lessonId,completed=true){const session=await this.ensureSession();const r=await this.authenticatedFetch(`${this.url}/rest/v1/lesson_progress?on_conflict=user_id,lesson_id`,{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=representation'},body:JSON.stringify({user_id:session.user.id,lesson_id:lessonId,completed})});const rows=await this.parse(r);return rows?.[0]}
+    async getSettings(){const r=await this.authenticatedFetch(`${this.url}/rest/v1/platform_settings?key=eq.general&select=*`);const rows=await this.parse(r);return rows?.[0]}
+    async updateSettings(value){const session=await this.ensureSession();const r=await this.authenticatedFetch(`${this.url}/rest/v1/platform_settings?key=eq.general`,{method:'PATCH',headers:{Prefer:'return=representation'},body:JSON.stringify({value,updated_by:session.user.id})});const rows=await this.parse(r);return rows?.[0]}
+    async updateMyProfile(fullName,phone){const r=await this.authenticatedFetch(`${this.url}/rest/v1/rpc/update_my_profile`,{method:'POST',body:JSON.stringify({p_full_name:fullName,p_phone:phone})});return this.parse(r)}
+    async updatePassword(password){const session=await this.ensureSession();const r=await fetch(`${this.url}/auth/v1/user`,{method:'PUT',headers:this.publicHeaders({Authorization:`Bearer ${session.access_token}`}),body:JSON.stringify({password})});return this.parse(r)}
+    createStudent(body){return this.adminAction('create-student',body)}
     async adminAction(path,body){
       const session=await this.ensureSession();
       const response=await fetch(`/api/admin/${path}`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${session.access_token}`},body:JSON.stringify(body)});

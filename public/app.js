@@ -74,6 +74,22 @@ function renderCourses(filter='all'){
     <div class="course-meta"><span>▤ ${c.lessons} درساً</span><span>◷ ${c.hours} ساعة</span><span><b>★</b> ${c.rating}</span></div></div></article>`).join('');
 }
 renderCourses();
+function courseType(category=''){
+  const value=category.toLowerCase();if(value.includes('إدارة')||value.includes('مشاريع'))return'management';if(value.includes('مكتب')||value.includes('كميات')||value.includes('حصر'))return'technical';return'design';
+}
+function courseSymbol(slug='',title=''){
+  const value=(slug+' '+title).toLowerCase();if(value.includes('primavera'))return'P6';if(value.includes('revit'))return'R';if(value.includes('quantity')||value.includes('كميات'))return'QS';if(value.includes('excel'))return'X';if(value.includes('civil'))return'C3';if(value.includes('autocad'))return'A';return title.trim().charAt(0)||'S';
+}
+function syncCourseSelect(){
+  const select=$('#joinForm select[name="course"]');if(!select)return;const selected=select.value;
+  select.innerHTML='<option value="">اختر الدورة</option>'+courses.map(c=>`<option>${escapeHTML(c.title)}</option>`).join('');
+  if(courses.some(c=>c.title===selected))select.value=selected;
+}
+async function syncPublishedCourses(){
+  if(!productionMode)return;
+  try{const rows=await api.listPublicCourses();if(!rows?.length)return;courses.splice(0,courses.length,...rows.map(c=>({id:c.slug,title:c.title,category:c.category||'دورة هندسية',type:courseType(c.category),level:c.level||'جميع المستويات',symbol:courseSymbol(c.slug,c.title),desc:c.description||'دورة هندسية تطبيقية من أكاديمية صرح.',lessons:Number(c.lessons_count||0),hours:Number(c.duration_hours||0),rating:'جديد'})));renderCourses();syncCourseSelect()}catch(err){console.warn('Could not load production courses',err)}
+}
+syncCourseSelect();syncPublishedCourses();
 $('#courseFilters').addEventListener('click',e=>{if(!e.target.dataset.filter)return;$$('#courseFilters button').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');renderCourses(e.target.dataset.filter)});
 
 // Navigation
@@ -267,6 +283,26 @@ $('#requestTabs').addEventListener('click',e=>{const b=e.target.closest('button'
 $('#requestSearch').addEventListener('input',e=>{requestSearch=e.target.value.trim();renderAdmin();e.target.focus()});
 $('[data-scroll-requests]').addEventListener('click',()=>$('.requests-section').scrollIntoView({behavior:'smooth'}));
 $('#resetDemo').addEventListener('click',()=>{if(confirm('إعادة جميع بيانات العرض إلى حالتها الأصلية؟')){data=JSON.parse(JSON.stringify(defaultData));saveData();requestFilter='all';requestSearch='';$('#requestSearch').value='';renderAdmin();showToast('تمت إعادة بيانات العرض بنجاح')}});
+
+// Course management
+$$('[data-open-course-modal]').forEach(button=>button.addEventListener('click',()=>{
+  $('#courseForm').reset();$('#courseFormError').textContent='';openModal('courseModal');
+}));
+function normalizeSlug(value=''){
+  return value.trim().toLowerCase().replace(/[^a-z0-9-]+/g,'-').replace(/^-+|-+$/g,'').replace(/-{2,}/g,'-');
+}
+$('#courseForm').addEventListener('submit',async e=>{
+  e.preventDefault();const form=e.target,fd=new FormData(form),submit=$('button[type="submit"]',form),error=$('#courseFormError');error.textContent='';
+  const title=fd.get('title').trim();const slug=normalizeSlug(fd.get('slug'))||`sarh-course-${Date.now().toString().slice(-7)}`;
+  const payload={title,slug,category:fd.get('category').trim(),level:fd.get('level'),duration_hours:Number(fd.get('duration')||0),lessons_count:Number(fd.get('lessons')||0),description:fd.get('description').trim(),intro_video_url:fd.get('introVideo').trim()||null,published:fd.get('published')==='on'};
+  submit.disabled=true;const original=submit.textContent;submit.textContent='جارٍ حفظ الدورة...';
+  try{
+    if(productionMode){await api.createCourse(payload);await syncPublishedCourses()}
+    else{courses.push({id:slug,title,category:payload.category,type:courseType(payload.category),level:payload.level,symbol:courseSymbol(slug,title),desc:payload.description,lessons:payload.lessons_count,hours:payload.duration_hours,rating:'جديد'});renderCourses();syncCourseSelect()}
+    closeModals();form.reset();showToast(payload.published?'تم حفظ الدورة ونشرها بنجاح':'تم حفظ الدورة كمسودة بنجاح');
+  }catch(err){error.textContent=err.message?.includes('duplicate')?'الرابط المختصر مستخدم مسبقاً، اختر رابطاً آخر.':(err.message||'تعذر حفظ الدورة. تحقق من البيانات والصلاحيات.')}
+  finally{submit.disabled=false;submit.textContent=original}
+});
 
 // Theme preference
 function applyTheme(theme){
